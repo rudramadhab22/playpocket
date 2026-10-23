@@ -1,0 +1,76 @@
+.reaction-container {
+  width: 100%;
+  max-width: 600px;
+}
+
+.reaction-area {
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.1s;
+  user-select: none;
+}
+
+.reaction-area h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.reaction-area p {
+  color: var(--color-text-muted);
+}
+
+/* States */
+.reaction-area.idle {
+  background-color: var(--color-surface);
+}
+
+.reaction-area.waiting {
+  background-color: #ff3333;
+}
+.reaction-area.waiting h3, .reaction-area.waiting p {
+  color: white;
+}
+
+.reaction-area.click {
+  background-color: #33cc33;
+}
+.reaction-area.click h3 {
+  color: white;
+  font-size: 3rem;
+  animation: pulse 0.5s infinite alternate;
+}
+
+.reaction-area.result {
+  background-color: #2b1f5c;
+}
+.reaction-area.result h3 {
+  color: var(--color-secondary);
+}
+
+.reaction-area.early {
+  background-color: #cc9900;
+}
+.reaction-area.early h3, .reaction-area.early p {
+  color: white;
+}
+
+@keyframes pulse {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
+}
+
+@media (max-width: 480px) {
+  .reaction-area {
+    height: 300px;
+  }
+  .reaction-area h3 {
+    font-size: 1.5rem;
+  }
+  .reaction-area.click h3 {
+    font-size: 2.5rem;
+  }
+}

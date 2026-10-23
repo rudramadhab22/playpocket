@@ -1,0 +1,29 @@
+.game-page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-family: var(--font-arcade);
+  font-size: 0.8rem;
+  padding: 0;
+  margin-bottom: 2rem;
+  width: fit-content;
+}
+
+.back-button:hover {
+  color: var(--color-secondary);
+}
+
+.game-wrapper {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
