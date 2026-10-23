@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Brain, Zap, Type } from 'lucide-react';
+import { Brain, Zap, Type, Hash, Grid3X3 } from 'lucide-react';
 import GameCard from '../components/GameCard';
 import { getStats } from '../utils/storage';
 import './Home.css';
@@ -25,6 +25,20 @@ const GAMES = [
     description: 'Guess the hidden word within limited attempts.',
     icon: Type,
     tag: 'Phase 1'
+  },
+  {
+    id: 'number-puzzle',
+    title: 'Number Puzzle',
+    description: 'Slide tiles to arrange numbers 1-15 in order.',
+    icon: Hash,
+    tag: 'Phase 2'
+  },
+  {
+    id: 'sudoku',
+    title: 'Sudoku',
+    description: 'Fill the grid so every row, column, and 3x3 box contains 1-9.',
+    icon: Grid3X3,
+    tag: 'Phase 2'
   }
 ];
 
@@ -60,6 +74,13 @@ const Home = () => {
             <span className="stat-label">Memory Record</span>
             <span className="stat-value">
               {stats.scores['memory-match']?.best ? `${stats.scores['memory-match'].best} moves` : '-'}
+            </span>
+          </div>
+          <div className="stat-divider"></div>
+          <div className="stat-item">
+            <span className="stat-label">Sudoku Best</span>
+            <span className="stat-value">
+              {stats.scores['sudoku-easy']?.best ? `${Math.floor(stats.scores['sudoku-easy'].best / 60)}:${(stats.scores['sudoku-easy'].best % 60).toString().padStart(2, '0')}` : '-'}
             </span>
           </div>
         </div>

@@ -3,12 +3,16 @@ import { ArrowLeft } from 'lucide-react';
 import MemoryMatch from '../games/MemoryMatch';
 import ReactionTest from '../games/ReactionTest';
 import WordGuess from '../games/WordGuess';
+import NumberPuzzle from '../games/NumberPuzzle';
+import Sudoku from '../games/Sudoku';
 import './GamePage.css';
 
 const GAME_COMPONENTS = {
   'memory-match': MemoryMatch,
   'reaction-test': ReactionTest,
   'word-guess': WordGuess,
+  'number-puzzle': NumberPuzzle,
+  'sudoku': Sudoku,
 };
 
 const GamePage = () => {
