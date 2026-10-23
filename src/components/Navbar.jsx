@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Gamepad2, Trophy, Menu } from 'lucide-react';
+import { Gamepad2, Trophy, Menu, ListOrdered } from 'lucide-react';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -14,6 +14,10 @@ const Navbar = () => {
           <Link to="/" className="nav-link">
             <Trophy size={18} className="nav-icon" />
             <span>Games</span>
+          </Link>
+          <Link to="/leaderboard" className="nav-link">
+            <ListOrdered size={18} className="nav-icon" />
+            <span>Leaderboard</span>
           </Link>
           <button className="mobile-menu-btn">
             <Menu size={24} />
