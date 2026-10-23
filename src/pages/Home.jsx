@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
-import { Brain, Zap, Type, Hash, Grid3X3 } from 'lucide-react';
+import { Brain, Zap, Type, Hash, Grid3X3, Calendar, CheckCircle } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import GameCard from '../components/GameCard';
-import { getStats } from '../utils/storage';
+import { getStats, hasCompletedToday } from '../utils/storage';
+import { getDailyChallengeGame } from '../utils/daily';
 import './Home.css';
 
-const GAMES = [
+export const GAMES = [
   {
     id: 'memory-match',
     title: 'Memory Match',
@@ -44,10 +46,17 @@ const GAMES = [
 
 const Home = () => {
   const [stats, setStats] = useState({ gamesPlayed: 0, scores: {} });
+  const [dailyGameId, setDailyGameId] = useState('');
+  const [isDailyCompleted, setIsDailyCompleted] = useState(false);
 
   useEffect(() => {
     setStats(getStats());
+    const dailyId = getDailyChallengeGame();
+    setDailyGameId(dailyId);
+    setIsDailyCompleted(hasCompletedToday(dailyId));
   }, []);
+
+  const dailyGame = GAMES.find(g => g.id === dailyGameId);
 
   return (
     <div className="home-container">
@@ -85,6 +94,31 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {dailyGame && (
+        <section className="daily-challenge mb-4">
+          <h2 className="section-title mb-2" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <Calendar size={24} /> Daily Challenge
+          </h2>
+          <div className={`card daily-card ${isDailyCompleted ? 'completed' : ''}`}>
+            <div className="daily-info">
+              <h3>{dailyGame.title}</h3>
+              <p>{dailyGame.description}</p>
+            </div>
+            <div className="daily-action">
+              {isDailyCompleted ? (
+                <div className="completed-badge">
+                  <CheckCircle size={20} /> Completed
+                </div>
+              ) : (
+                <Link to={`/game/${dailyGame.id}`} className="btn-primary">
+                  Play Challenge
+                </Link>
+              )}
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className="game-library">
         <h2 className="section-title mb-2">Game Library</h2>

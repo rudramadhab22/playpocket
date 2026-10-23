@@ -58,6 +58,41 @@
   color: var(--color-primary);
 }
 
+.daily-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(0, 245, 212, 0.1), rgba(157, 78, 221, 0.2));
+  border: 2px solid rgba(0, 245, 212, 0.3);
+}
+
+.daily-card.completed {
+  background: linear-gradient(135deg, rgba(76, 209, 55, 0.1), rgba(38, 24, 74, 1));
+  border: 2px solid rgba(76, 209, 55, 0.3);
+}
+
+.daily-info h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.daily-info p {
+  color: var(--color-text-muted);
+}
+
+.completed-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-success);
+  font-weight: bold;
+  font-family: var(--font-arcade);
+  font-size: 0.8rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  background-color: rgba(76, 209, 55, 0.1);
+}
+
 .game-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -75,5 +110,17 @@
   .stat-divider {
     width: 100%;
     height: 1px;
+  }
+  .daily-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+  .daily-action {
+    width: 100%;
+  }
+  .daily-action a, .daily-action .completed-badge {
+    width: 100%;
+    justify-content: center;
   }
 }
